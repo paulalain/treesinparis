@@ -59,6 +59,7 @@ export default Ember.Service.extend({
 
 	serializer: function(data) {
 		var trees = [];
+		var hits = data.nhits;
 		data.records.forEach(function(record) {
 			var tree = {};
 			tree.species = record.fields.espece;
@@ -72,7 +73,10 @@ export default Ember.Service.extend({
 			trees.push(tree);
 		});
 
-		return trees;
+		return { 
+			hits: hits, 
+			trees: trees
+		};
 	}
 
 });

@@ -26,7 +26,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each model as |tree|}}
+			{{#each model.trees as |tree|}}
 				<tr>
 					<td>{{tree.species}}</td>
 					<td>{{tree.height}}</td>
@@ -42,4 +42,8 @@
 			{{/each}}
 		</tbody>
 	</table>
+
+	<div class="NbHits">
+		{{model.hits}} tree(s).
+	</div>
 {{/if}}
