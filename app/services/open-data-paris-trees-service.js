@@ -4,8 +4,15 @@ export default Ember.Service.extend({
 	url: 'http://opendata.paris.fr/api/records/1.0/search?dataset=les-arbres',
 	rows: 50,
 
-	buildURL: function() {
-		return this.url + '&rows=' + this.rows;
+	buildURL: function(sort) {
+		var additionalSettings = '';
+		var serializedSortName = this.serializeSort(sort);
+
+		if(serializedSortName) {
+			additionalSettings = '&sort=' + serializedSortName;
+		}
+
+		return this.url + '&rows=' + this.rows + additionalSettings;
 	},
 
 	ajax: function(url) {
@@ -28,12 +35,22 @@ export default Ember.Service.extend({
 		});
 	},
 
-	getTreesList: function() {
+	getTreesList: function(sort) {
 		var self = this;
-		return this.ajax(this.buildURL())
+		return this.ajax(this.buildURL(sort))
 			.then(function(data) {
 				return self.serializer(data);
 			});
+	},
+
+	serializeSort: function(sort) {
+		if(sort === 'species') {
+			return 'espece';
+		} else if(sort === 'height') {
+			return 'hauteurenm';
+		} else if(sort === 'age') {
+			return '-dateplanta';
+		}
 	},
 
 	serializer: function(data) {
