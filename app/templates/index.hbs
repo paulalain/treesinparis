@@ -1,41 +1,39 @@
 {{#if controller.loading}}
-	<div class="spinnerContainer">
-		<p class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active spinner"></p>
+	<div class="Loading">
+		Loading...
 	</div>
 {{else}}
-	<form action="#">
-		Minimum height:
-		<div class="mdl-textfield mdl-js-textfield textfield-demo">
-			{{input value=controller.minimumHeight class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="minimumheight"}}
-			<label class="mdl-textfield__label" for="minimumheight">Minimum height...</label>
-			<span class="mdl-textfield__error">Input is not a number!</span>
+	<form action="#" class="Treesform form-inline">
+		<div class="form-group">
+    		<label for="minimumheight">Minimum Height:</label>
+			{{input value=controller.minimumHeight class="form-control" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="minimumheight"}}
 		</div>
-		Sort by:
-		<div class="mdl-textfield mdl-js-textfield">
-			{{view "select" content=sorts value=selectedSort className="mdl-textfield__input"}}
+		<div class="form-group">
+			<label for="sort">Sort by:</label>
+			{{view "select" content=sorts value=selectedSort id="sort" class="form-control"}}
 		</div>
 	</form>
 
-	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp trees">
+	<table class="TreesTable table table-hover table-bordered">
 		<thead>
 			<tr>
-				<th class="mdl-data-table__cell--non-numeric">Species</th>
+				<th>Species</th>
 				<th>Height (m)</th>
 				<th>Circumference (cm)</th>
 				<th>Age (yrs)</th>
-				<th class="mdl-data-table__cell--non-numeric">Address</th>
-				<th class="mdl-data-table__cell--non-numeric">Geo Location</th>
+				<th>Address</th>
+				<th>Geo Location</th>
 			</tr>
 		</thead>
 		<tbody>
 			{{#each model as |tree|}}
 				<tr>
-					<td class="mdl-data-table__cell--non-numeric">{{tree.species}}</td>
+					<td>{{tree.species}}</td>
 					<td>{{tree.height}}</td>
 					<td>{{tree.circumference}}</td>
 					<td>{{tree.age}}</td>
-					<td class="mdl-data-table__cell--non-numeric">{{tree.address}}</td>
-					<td class="mdl-data-table__cell--non-numeric">{{tree.geolocalisation.x}}x {{tree.geolocalisation.y}}y</td>
+					<td>{{tree.address}}</td>
+					<td>{{tree.geolocalisation.x}}x {{tree.geolocalisation.y}}y</td>
 				</tr>
 			{{/each}}
 		</tbody>
