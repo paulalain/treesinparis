@@ -33,7 +33,11 @@
 					<td>{{tree.circumference}}</td>
 					<td>{{tree.age}}</td>
 					<td>{{tree.address}}</td>
-					<td>{{tree.geolocalisation.x}}x {{tree.geolocalisation.y}}y</td>
+					<td>
+						<a href="https://www.google.com/maps/@{{tree.geolocalisation.x}},{{tree.geolocalisation.y}},20z">
+								{{tree.geolocalisation.x}}x
+								{{tree.geolocalisation.y}}y
+						</a></td>
 				</tr>
 			{{/each}}
 		</tbody>

@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	selectedSort: '',
 	minimumHeight: null,
-	sorts: ['', 'height', 'age'],
+	sorts: ['', 'Age', 'Height'],
 	loading: false,
 
 	reloadData: function() {

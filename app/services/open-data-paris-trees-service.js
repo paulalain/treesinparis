@@ -48,11 +48,11 @@ export default Ember.Service.extend({
 	},
 
 	serializeSort: function(sort) {
-		if(sort === 'species') {
+		if(sort === 'Species') {
 			return 'espece';
-		} else if(sort === 'height') {
+		} else if(sort === 'Height') {
 			return 'hauteurenm';
-		} else if(sort === 'age') {
+		} else if(sort === 'Age') {
 			return '-dateplanta';
 		}
 	},
